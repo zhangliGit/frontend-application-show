@@ -119,6 +119,13 @@ export default {
           icon: app,
           url: 'design',
           randomNum: 3
+        },
+        {
+          id: 6,
+          name: '模块化',
+          icon: app,
+          url: 'module',
+          randomNum: 2
         }
       ]
     }

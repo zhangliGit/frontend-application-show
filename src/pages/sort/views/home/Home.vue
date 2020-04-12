@@ -85,14 +85,36 @@ export default {
       // 冒泡排序
       let arr = [9, 4, 8, 2, 6, 3, 5]
       console.time('冒泡排序耗时')
-      for (let i = 0; i < arr.length - 1; i++) {
-        for (let j = 0; j < arr.length - 1 - i; j++) {
+      // for (let i = 0; i < arr.length; i++) {
+      //   for (let j = 0; j < arr.length - 1; j++) {
+      //     if (arr[j] > arr[j + 1]) {
+      //       const tmp = arr[j + 1]
+      //       arr[j + 1] = arr[j]
+      //       arr[j] = tmp
+      //     }
+      //   }
+      // }
+      let low = 0
+      let high = arr.length - 1
+      while (low < high) {
+        for (let j = 0; j < high; j++) {
+          // 正向排序
           if (arr[j] > arr[j + 1]) {
-            const temp = arr[j + 1]
+            const tmp = arr[j + 1]
             arr[j + 1] = arr[j]
-            arr[j] = temp
+            arr[j] = tmp
           }
         }
+        high--
+        for (let j = high; j > low; j--) {
+          // 反向排序
+          if (arr[j] < arr[j - 1]) {
+            const tmp = arr[j - 1]
+            arr[j - 1] = arr[j]
+            arr[j] = tmp
+          }
+        }
+        low++
       }
       console.timeEnd('冒泡排序耗时')
       console.log(arr)
