@@ -24,7 +24,7 @@
       </div>
       <div class="list-title">快速排序</div>
       <div>
-        <div class="btn" @click="quickSort(arr, 0, arr.length -1)">排序</div>
+        <div class="btn" @click="quickSort(arr, 0, arr.length - 1)">排序</div>
       </div>
       <div class="list-title">希尔排序</div>
       <div>
@@ -121,18 +121,21 @@ export default {
     },
     chooseSort() {
       const arr = [9, 4, 8, 2, 6, 3, 5]
-      let minIndex, temp
+      for (let i = 0; i < arr.length - 1; i++) {
+        console.log(arr[i])
+      }
+      let minIndex, tmp
       console.time('选择排序耗时')
-      for (let i = 0; i < arr.length; i++) {
+      for (let i = 0; i < arr.length - 1; i++) {
         minIndex = i
         for (let j = i + 1; j < arr.length; j++) {
           if (arr[j] < arr[minIndex]) {
             minIndex = j
           }
         }
-        temp = arr[i]
-        arr[i] = arr[minIndex]
-        arr[minIndex] = temp
+        tmp = arr[minIndex]
+        arr[minIndex] = arr[i]
+        arr[i] = tmp
       }
       console.timeEnd('选择排序耗时')
       console.log(arr)
