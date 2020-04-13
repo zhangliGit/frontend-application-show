@@ -121,11 +121,18 @@ export default {
           randomNum: 3
         },
         {
-          id: 6,
+          id: 7,
           name: '模块化',
           icon: app,
           url: 'module',
           randomNum: 2
+        },
+        {
+          id: 8,
+          name: '界面布局',
+          icon: app,
+          url: 'layout',
+          randomNum: 4
         }
       ]
     }

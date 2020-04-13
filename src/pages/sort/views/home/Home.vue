@@ -79,7 +79,11 @@ export default {
       arr: [9, 4, 8, 2, 6, 3, 5]
     }
   },
-  async mounted() {},
+  async mounted() {
+    var url = '?' + window.location.href.split('?')[1]
+    var params = new URLSearchParams(url)
+    console.log(params.get('title'))
+  },
   methods: {
     maopaoSort() {
       // 冒泡排序
