@@ -2,6 +2,16 @@
   <div class="home qui-page qui-fx-ver">
     <header-com title="文件操作"></header-com>
     <scroll-list ref="scroll">
+      <div class="title">canvas对图片进行压缩裁剪</div>
+      <div class="box">
+        <div class="file">
+          选取文件
+          <input @change="zipFile($event)" type="file" accept="image/*" />
+        </div>
+        <div>
+          <img :src="url" alt />
+        </div>
+      </div>
       <div class="title">Blob</div>
       <div>
         <div class="file" @click="change">转化</div>
@@ -43,16 +53,6 @@
           <input @change="showFile($event)" type="file" accept="image/*" />
         </div>
       </div>
-      <div class="title">canvas对图片进行压缩裁剪</div>
-      <div class="box">
-        <div class="file">
-          选取文件
-          <input @change="zipFile($event)" type="file" accept="image/*" />
-        </div>
-        <div>
-          <img :src="url" alt />
-        </div>
-      </div>
     </scroll-list>
   </div>
 </template>
@@ -88,8 +88,11 @@ export default {
       newImg.src = url
       newImg.onload = () => {
         var canvas = document.createElement('canvas')
+        canvas.width = 200
+        canvas.height = 400
         const context = canvas.getContext('2d')
-        context.drawImage(newImg, 0, 0, 80, 80)
+        context.rotate(90*Math.PI/180)
+        context.drawImage(newImg,0,0,newImg.width, newImg.height, 0, -200, 400, 200);
         const base64 = canvas.toDataURL('image/png')
         console.log(base64)
         this.url = base64
@@ -223,10 +226,8 @@ export default {
     padding-left: 20px;
   }
   .box {
-    height: 120px;
     padding: 10px 10px;
     img {
-      max-width: 200px;
     }
   }
   .file {
