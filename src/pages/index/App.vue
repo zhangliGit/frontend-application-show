@@ -133,6 +133,20 @@ export default {
           icon: app,
           url: 'layout',
           randomNum: 4
+        },
+        {
+          id: 9,
+          name: '图片处理',
+          icon: app,
+          url: 'tuxing',
+          randomNum: 3
+        },
+        {
+          id: 10,
+          name: '手写vue',
+          icon: app,
+          url: 'vue',
+          randomNum: 2
         }
       ]
     }

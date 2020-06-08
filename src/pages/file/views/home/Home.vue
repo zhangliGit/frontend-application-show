@@ -88,15 +88,14 @@ export default {
       newImg.src = url
       newImg.onload = () => {
         var canvas = document.createElement('canvas')
-        canvas.width = 200
-        canvas.height = 400
+        canvas.width = parseInt(600 * (newImg.width / newImg.height))
+        canvas.height = 600
         const context = canvas.getContext('2d')
-        context.rotate(90*Math.PI/180)
-        context.drawImage(newImg,0,0,newImg.width, newImg.height, 0, -200, 400, 200);
+        // context.rotate(90*Math.PI/180)
+        context.drawImage(newImg,0,0,newImg.width, newImg.height, 0, 0, canvas.width, canvas.height);
         const base64 = canvas.toDataURL('image/png')
         console.log(base64)
         this.url = base64
-        console.log(base64.length)
       }
     },
     change() {
