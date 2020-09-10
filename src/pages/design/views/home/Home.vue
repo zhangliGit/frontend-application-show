@@ -1,54 +1,43 @@
 <template>
   <div class="home qui-page qui-fx-ver">
-    <header-com title="示例"></header-com>
-    <scroll-list ref="scroll" @loadMore="showList" pullUpLoad>
-      <div @click="goDetail" class="data-list qui-fx-jsb qui-bd-b" v-for="data in dataList" :key="data.id">
-        <span>{{ data.name }}</span>
-        <span>{{ data.number }}</span>
-      </div>
+    <header-com title="设计模式"></header-com>
+    <scroll-list ref="scroll">
+      <div class="title">观察者模式</div>
+      <div @click="change">触发</div>
     </scroll-list>
   </div>
 </template>
 
 <script>
+import observer from './observer'
 import HeaderCom from '@com/HeaderCom'
 import ScrollList from '@com/ScrollList'
-import { store, actions } from '../../store'
 export default {
   name: 'Home',
   components: {
     HeaderCom,
-    ScrollList
+    ScrollList,
   },
   computed: {
-    count: () => store.count
+  },
+  created () {
+    observer.subscribe('click', (msg) => {
+      console.log(msg, '我是created阶段')
+    })
   },
   data() {
-    return { dataList: [], page: 1 }
+    return {
+      title: '我是谁'
+    }
   },
   async mounted() {
-    this.showList()
+    observer.subscribe('click', (msg) => {
+      console.log(msg, '我是mounted阶段')
+    })
   },
   methods: {
-    async showList(tag = false) {
-      const res = await actions.getIndex()
-      if (tag) {
-        // 加载下一页
-        if (res.data.length === 0) {
-          this.$notify('数据加载完毕')
-          return
-        }
-        this.dataList = this.dataList.concat(res.data)
-        this.$nextTick(() => {
-          this.$refs.scroll.refresh()
-        })
-      } else {
-        this.dataList = res.data
-        this.$refs.scroll.init(this.dataList)
-      }
-    },
-    goDetail() {
-      this.$router.push('/detail')
+    change () {
+      observer.publish('click', '我是值啊')
     }
   }
 }
@@ -56,9 +45,5 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  .data-list {
-    background-color: #fff;
-    padding: 20px 10px;
-  }
 }
 </style>

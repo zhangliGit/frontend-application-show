@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <keep-alive>
-      <router-view v-if="$route.meta.keepAlive">
-      </router-view>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
@@ -11,8 +10,16 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {}
+  },
+  methods: {
+    show() {
+      this.title = 'hello'
+      this.$nextTick(() => {
+        console.log(document.querySelector('#title').innerHTML)
+      })
+    }
   }
 }
 </script>
