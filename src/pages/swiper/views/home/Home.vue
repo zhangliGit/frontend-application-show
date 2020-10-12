@@ -34,16 +34,17 @@ export default {
     HeaderCom,
     ScrollList,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper
-    }
+    },
   },
   data() {
     return {
       swiperOptions: {
+        direction: 'vertical',
         // 鼠标控制
         mousewheel: true,
         // 切换效果
@@ -64,7 +65,7 @@ export default {
         // 左右按钮配置
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          prevEl: '.swiper-button-prev',
         },
         // 是否可以循环滚动
         loop: true,
@@ -72,7 +73,7 @@ export default {
           delay: 2000,
           stopOnLastSlide: false,
           // 设置手动滑动之后可以继续自动滑动
-          disableOnInteraction: false
+          disableOnInteraction: false,
         },
         // 分页器
         pagination: {
@@ -81,9 +82,9 @@ export default {
           // type: 'fraction'
           // type: 'progressbar'
           // type: 'custom'
-          clickable: true
-        }
-      }
+          clickable: true,
+        },
+      },
     }
   },
   async mounted() {
@@ -92,8 +93,8 @@ export default {
   methods: {
     change() {
       this.swiper.slideTo(3, 1000, false)
-    }
-  }
+    },
+  },
 }
 </script>
 
