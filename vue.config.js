@@ -71,6 +71,14 @@ module.exports = {
         pathRewrite: {
           '^/api': ''
         }
+      },
+      '/upload': {
+        target: 'http://canpoint-photo.oss-cn-beijing.aliyuncs.com',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/upload': ''
+        }
       }
     }
   }

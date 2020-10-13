@@ -24,6 +24,7 @@
     "exif-js": "^2.3.0",
     "fastclick": "^1.0.6",
     "highcharts": "^8.0.4",
+    "jquery": "^3.5.1",
     "mobile-select": "^1.1.2",
     "nodejs-websocket": "^1.7.2",
     "qs": "^6.7.0",
